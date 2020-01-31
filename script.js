@@ -17,9 +17,11 @@ function whatShouldWeHightlight(input) {
     for (sentence of inputArray) {
       var color;
       if (sentence.replace(" ", "") != "") {
+        // Replacement for regex \b, for better non-ascii chars support.
         var splitSentence = arrayRemove(sentence.split(" "), "");
         var splitSentenceLen = splitSentence.length;
         
+        // set the color based on length
         if (splitSentenceLen <= 2) {
           color = "two";
         } else if (splitSentenceLen <= 4) {
