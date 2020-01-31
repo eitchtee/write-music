@@ -1,7 +1,8 @@
 # write-music
 
-![alt text](https://i.imgur.com/ULv7kAA.jpg "Gary Provost's This Sentence Has 5 Words quote")
 See the rhythm of your text right on your browser.
+
+![alt text](https://i.imgur.com/ULv7kAA.jpg "Gary Provost's This Sentence Has 5 Words quote")
 
 ---
 
