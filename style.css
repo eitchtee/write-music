@@ -9,7 +9,7 @@ body {
   background-color: #121212;
   display: grid;
   top: 10px;
-  bottom: 10px;
+  bottom: 20px;
   left: 5px;
   right: 5px;
   position: fixed;
@@ -20,7 +20,7 @@ body {
   font-size: 1.6em;
   resize: none;
   overflow: scroll;
-  padding: 10px;
+  padding: 5px;
   border: 0px;
   color: #fff;
   font-family: monospace;
@@ -60,4 +60,38 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
+}
+
+.credits {
+  font-family: monospace;
+  font-size: smaller;
+  bottom: 0;
+  right: 0;
+  top: 97.5%;
+  position: absolute;
+  margin: 0;
+  padding-right: 5px;
+}
+
+body > div.credits > a.by {
+  color: grey;
+  text-decoration: none;
+}
+
+body > div.credits > a.check-code{
+  color: grey;
+  text-decoration: none;
+}
+
+
+body > div.credits > a.by:hover {
+  color: wheat;
+  text-decoration:underline;
+  text-decoration-style: dotted;
+}
+
+body > div.credits > a.check-code:hover {
+  color: wheat;
+  text-decoration:underline;
+  text-decoration-style: dotted;
 }
