@@ -1,30 +1,30 @@
 var sTwo = new Howl({
   src: [
-    "https://cdn.glitch.com/a0f1f35c-b88a-4f7b-a72e-9f46d39647e0%2F316898__jaz-the-man-2__do.wav?v=1580617302242"
+    "./sounds/do.wav"
   ]
 });
 
 var sFour = new Howl({
   src: [
-    "https://cdn.glitch.com/a0f1f35c-b88a-4f7b-a72e-9f46d39647e0%2F316908__jaz-the-man-2__re.wav?v=1580624636002"
+    "./sounds/re.wav"
   ]
 });
 
 var sSix = new Howl({
   src: [
-    "https://cdn.glitch.com/a0f1f35c-b88a-4f7b-a72e-9f46d39647e0%2F316906__jaz-the-man-2__mi.wav?v=1580624747025"
+    "./sounds/mi.wav"
   ]
 });
 
 var sTwelve = new Howl({
   src: [
-    "https://cdn.glitch.com/a0f1f35c-b88a-4f7b-a72e-9f46d39647e0%2F316904__jaz-the-man-2__fa.wav?v=1580624804648"
+    "./sounds/fa.wav"
   ]
 });
 
 var sElse = new Howl({
   src: [
-    "https://cdn.glitch.com/a0f1f35c-b88a-4f7b-a72e-9f46d39647e0%2F316912__jaz-the-man-2__sol.wav?v=1580624838070"
+    "./sounds/sol.wav"
   ]
 });
 
