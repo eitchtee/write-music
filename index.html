@@ -5,6 +5,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <title>Write Music</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.min.js"></script>
 
     <!-- highlight-within-textarea CSS/JS -->
     <link href="./jquery.highlight-within-textarea.css" rel="stylesheet" />
@@ -18,6 +19,7 @@
   </head>
 
   <body>
+    
     <textarea
       class="text"
       placeholder="Don't just write words. Write music..."
@@ -30,12 +32,22 @@
     So write with a combination of short, medium, and long sentences. Create a sound that pleases the reader's ear. Don't just write words. Write music. -->
 
     <div class="credits">
-      <a class="by" href="https://github.com/eitchtee/" target="_blank">by @eitchtee</a>
-      <a class="check-code" href="https://github.com/eitchtee/write-music" target="_blank"
+      <a class="by" href="https://github.com/eitchtee/" target="_blank"
+        >by @eitchtee</a
+      >
+      <a
+        class="check-code"
+        href="https://github.com/eitchtee/write-music"
+        target="_blank"
         >Check the code</a
       >
     </div>
 
+    <button id="listen">
+      Play
+    </button>
+
     <script src="./script.js"></script>
+    
   </body>
 </html>
