@@ -21,7 +21,7 @@ body {
   resize: none;
   overflow: scroll;
   padding: 5px;
-  border: 0px;
+    border: 0;
   color: #fff;
   font-family: monospace;
 }
