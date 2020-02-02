@@ -1,7 +1,80 @@
+var sTwo = new Howl({
+  src: [
+    "./sounds/do.wav"
+  ]
+});
+
+var sFour = new Howl({
+  src: [
+    "./sounds/re.wav"
+  ]
+});
+
+var sSix = new Howl({
+  src: [
+    "./sounds/mi.wav"
+  ]
+});
+
+var sTwelve = new Howl({
+  src: [
+    "./sounds/fa.wav"
+  ]
+});
+
+var sElse = new Howl({
+  src: [
+    "./sounds/sol.wav"
+  ]
+});
+
+var soundsArray = [sTwo, sFour, sSix, sTwelve, sElse];
+
+// isolated layer wrapper (for the local variables)
+(function(_W) {
+  var cache = [], // will store all timeouts IDs
+    _set = _W.setTimeout, // save original reference
+    _clear = _W.clearTimeout; // save original reference
+
+  // Wrap original setTimeout with a function
+  _W.setTimeout = function(CB, duration) {
+    // also, wrap the callback, so the cache referece will be removed
+    // when the timerout has reached (fired the callback)
+    var id = _set(function() {
+      CB();
+      removeCacheItem(id);
+    }, duration || 0);
+
+    cache.push(id); // store reference in the cache array
+
+    // id must be returned to the user could save it and clear it if they choose to
+    return id;
+  };
+
+  // Wrap original clearTimeout with a function
+  _W.clearTimeout = function(id) {
+    _clear(id);
+    removeCacheItem(id);
+  };
+
+  // Add a custom function named "clearTimeouts" to the "window" object
+  _W.clearTimeouts = function() {
+    cache.forEach(n => _clear(n));
+    cache.length = [];
+  };
+
+  // removes a specific id from the cache array
+  function removeCacheItem(id) {
+    var idx = cache.indexOf(id);
+
+    if (idx > -1) cache = cache.filter(n => n != id);
+  }
+})(window);
+
 function arrayRemove(arr, value) {
-   return arr.filter(function(ele){
-       return ele != value;
-   });
+  return arr.filter(function(ele) {
+    return ele != value;
+  });
 }
 
 
@@ -20,7 +93,7 @@ function whatShouldWeHightlight(input) {
         // Replacement for regex \b, for better non-ascii chars support.
         var splitSentence = arrayRemove(sentence.split(" "), "");
         var splitSentenceLen = splitSentence.length;
-        
+
         // set the color based on length
         if (splitSentenceLen <= 2) {
           color = "two";
@@ -54,3 +127,63 @@ function whatShouldWeHightlight(input) {
 $(".text").highlightWithinTextarea({
   highlight: whatShouldWeHightlight
 });
+
+
+function playAudio(soundType, highlight, i) {
+  window.setTimeout(function() {
+    $(".text").highlightWithinTextarea({ highlight: [highlight] });
+    soundsArray[soundType].play();
+    if (i >= arrayHighlight.length - 1) {
+      $(".text").attr("disabled", false);
+      $(".text").highlightWithinTextarea({ highlight: whatShouldWeHightlight });
+      $("#listen").text("Play");
+      $(".text").focus();
+    }
+  }, 750 * i);
+  var input = document.getElementsByClassName("text")[0].value;
+  var arrayHighlight = whatShouldWeHightlight(input);
+}
+
+document.getElementById("listen").onclick = function() {
+  if ($("#listen").text() == "Stop") {
+    console.log("STOP");
+    window.clearTimeouts();
+    $(".text").attr("disabled", false);
+    $(".text").highlightWithinTextarea({ highlight: whatShouldWeHightlight });
+    $("#listen").text("Play");
+    $(".text").focus();
+    return;
+  }
+  
+  $("#listen").text("Stop");
+  $(".text").attr("disabled", true);
+  $(".text").highlightWithinTextarea({ highlight: [] });
+
+  var input = document.getElementsByClassName("text")[0].value;
+  var arrayHighlight = whatShouldWeHightlight(input);
+  var soundType = 0;
+  var i = 0;
+
+  for (mark of arrayHighlight) {
+    var note = mark.className;
+    switch (note) {
+      case "two":
+        soundType = 0;
+        break;
+      case "four":
+        soundType = 1;
+        break;
+      case "six":
+        soundType = 2;
+        break;
+      case "twelve":
+        soundType = 3;
+        break;
+      case "else":
+        soundType = 4;
+    }
+
+    playAudio(soundType, mark, i);
+    i++;
+  }
+};
