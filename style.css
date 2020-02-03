@@ -9,7 +9,7 @@ body {
   background-color: #121212;
   display: grid;
   top: 10px;
-  bottom: 20px;
+    bottom: 40px;
   left: 5px;
   right: 5px;
   position: fixed;
@@ -37,7 +37,7 @@ body {
 }
 
 .hwt-content mark.two {
-  background-color: rgba(253, 253, 131, 0.8);
+    background-color: rgba(253, 253, 131, 0.6);
 }
 
 .hwt-content mark.four {
@@ -67,8 +67,8 @@ button:focus {
   font-family: monospace;
   font-size: smaller;
   bottom: 0;
-  left: 10px;
-  top: 97.5%;
+    right: 5px;
+    top: 96.5%;
   position: absolute;
   margin: 0;
   padding-right: 5px;
@@ -107,4 +107,39 @@ body > div.credits > a.check-code:hover {
   position: absolute;
   margin: 0;
   padding-right: 5px;
+}
+
+.play-button {
+    width: 50px;
+    height: 50px;
+
+    background-color: #56a756;
+
+    border-radius: 50%;
+    box-shadow: 0 4px 10px 0 #666;
+    transition: all 0.1s ease-in-out;
+
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    line-height: 53px;
+
+    position: fixed;
+    right: 50%;
+    bottom: 8px;
+    z-index: 1;
+
+    border: none;
+    padding: 0;
+    outline: none;
+}
+
+.play-button:hover {
+    box-shadow: 0 6px 14px 0 #666;
+    transform: scale(1.05);
+}
+
+.play-button:active {
+    box-shadow: 0 4px 8px 0 #666;;
+    transform: scale(0.95);
 }

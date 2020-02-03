@@ -31,7 +31,7 @@ const sElse = new Howl({
 const soundsArray = [sTwo, sFour, sSix, sTwelve, sElse];
 
 let textBox = $(".text");
-let playButton = $('#listen');
+let playButton = $('.play-button');
 
 
 // Wrapper to setTimeout that allows the easy removable of all timeouts set
@@ -137,7 +137,7 @@ textBox.highlightWithinTextarea({
 
 
 function playAudio(soundType, highlight, i) {
-    const input = document.getElementsByClassName("text")[0].value;
+    const input = textBox.val();
     const arrayHighlight = whatShouldWeHighlight(input);
 
     window.setTimeout(function () {
@@ -147,7 +147,7 @@ function playAudio(soundType, highlight, i) {
             window.setTimeout(function () {  // waits before resetting for a better visual experience.
                 textBox.attr("disabled", false);
                 textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
-                playButton.text("Play");
+                playButton.html('<i class="fas fa-play"></i>');
                 textBox.focus();
             }, 800);
         }
@@ -155,25 +155,30 @@ function playAudio(soundType, highlight, i) {
 
 }
 
-document.getElementById("listen").onclick = function () {
+playButton.click(function () {
+    console.log(playButton.html());
     // Reset the view if the stop button is pressed
-    if (playButton.text() === "Stop") {
+    if (playButton.html() === '<i class="fas fa-pause"></i>') {
         window.clearTimeouts();  // Stop and clear the sound timeouts
         textBox.attr("disabled", false);
         textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
-        playButton.text("Play");
+        playButton.html('<i class="fas fa-play"></i>');
         textBox.focus();
         return;
     }
 
-    playButton.text("Stop");
-    textBox.attr("disabled", true);
-    textBox.highlightWithinTextarea({highlight: []});
-
-    const input = document.getElementsByClassName("text")[0].value;
+    const input = textBox.val();
     const arrayHighlight = whatShouldWeHighlight(input);
     let soundType = 0;
     let i = 0;
+
+    if (arrayHighlight.length >= 1) {
+        playButton.html('<i class="fas fa-pause"></i>');
+        textBox.attr("disabled", true);
+        // textBox.highlightWithinTextarea({highlight: []});
+    } else {
+        return;
+    }
 
     let mark;
     for (mark of arrayHighlight) {
@@ -199,4 +204,4 @@ document.getElementById("listen").onclick = function () {
         playAudio(soundType, mark, i);
         i++;
     }
-};
+});
