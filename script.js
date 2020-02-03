@@ -1,189 +1,206 @@
-var sTwo = new Howl({
-  src: [
-    "./sounds/do.wav"
-  ]
+const sTwo = new Howl({
+    src: [
+        "./sounds/do.wav"
+    ]
 });
 
-var sFour = new Howl({
-  src: [
-    "./sounds/re.wav"
-  ]
+const sFour = new Howl({
+    src: [
+        "./sounds/re.wav"
+    ]
 });
 
-var sSix = new Howl({
-  src: [
-    "./sounds/mi.wav"
-  ]
+const sSix = new Howl({
+    src: [
+        "./sounds/mi.wav"
+    ]
 });
 
-var sTwelve = new Howl({
-  src: [
-    "./sounds/fa.wav"
-  ]
+const sTwelve = new Howl({
+    src: [
+        "./sounds/sol.wav"
+    ]
 });
 
-var sElse = new Howl({
-  src: [
-    "./sounds/sol.wav"
-  ]
+const sElse = new Howl({
+    src: [
+        "./sounds/la.wav"
+    ]
 });
 
-var soundsArray = [sTwo, sFour, sSix, sTwelve, sElse];
+const soundsArray = [sTwo, sFour, sSix, sTwelve, sElse];
 
+let textBox = $(".text");
+let playButton = $('.play-button');
+
+
+// Wrapper to setTimeout that allows the easy removable of all timeouts set
 // isolated layer wrapper (for the local variables)
-(function(_W) {
-  var cache = [], // will store all timeouts IDs
-    _set = _W.setTimeout, // save original reference
-    _clear = _W.clearTimeout; // save original reference
+(function (_W) {
+    let cache = [], // will store all timeouts IDs
+        _set = _W.setTimeout, // save original reference
+        _clear = _W.clearTimeout; // save original reference
 
-  // Wrap original setTimeout with a function
-  _W.setTimeout = function(CB, duration) {
-    // also, wrap the callback, so the cache referece will be removed
-    // when the timerout has reached (fired the callback)
-    var id = _set(function() {
-      CB();
-      removeCacheItem(id);
-    }, duration || 0);
+    // Wrap original setTimeout with a function
+    _W.setTimeout = function (CB, duration) {
+        // also, wrap the callback, so the cache reference will be removed
+        // when the timeout has reached (fired the callback)
+        const id = _set(function () {
+            CB();
+            removeCacheItem(id);
+        }, duration || 0);
 
-    cache.push(id); // store reference in the cache array
+        cache.push(id); // store reference in the cache array
 
-    // id must be returned to the user could save it and clear it if they choose to
-    return id;
-  };
+        // id must be returned to the user could save it and clear it if they choose to
+        return id;
+    };
 
-  // Wrap original clearTimeout with a function
-  _W.clearTimeout = function(id) {
-    _clear(id);
-    removeCacheItem(id);
-  };
+    // Wrap original clearTimeout with a function
+    _W.clearTimeout = function (id) {
+        _clear(id);
+        removeCacheItem(id);
+    };
 
-  // Add a custom function named "clearTimeouts" to the "window" object
-  _W.clearTimeouts = function() {
-    cache.forEach(n => _clear(n));
-    cache.length = [];
-  };
+    // Add a custom function named "clearTimeouts" to the "window" object
+    _W.clearTimeouts = function () {
+        cache.forEach(n => _clear(n));
+        cache.length = [];
+    };
 
-  // removes a specific id from the cache array
-  function removeCacheItem(id) {
-    var idx = cache.indexOf(id);
+    // removes a specific id from the cache array
+    function removeCacheItem(id) {
+        const idx = cache.indexOf(id);
 
-    if (idx > -1) cache = cache.filter(n => n != id);
-  }
+        if (idx > -1) cache = cache.filter(n => n !== id);
+    }
 })(window);
 
 function arrayRemove(arr, value) {
-  return arr.filter(function(ele) {
-    return ele != value;
-  });
+    return arr.filter(function (ele) {
+        return ele !== value;
+    });
 }
 
 
-function whatShouldWeHightlight(input) {
-  // Only god himself knows what happens here
-  var inputArray = input.match(/(\p{L}?[^\.!\?]+[\.!\?]+)|(.+[^\.!\?]+$)/gu);
-  var highlightResult = [];
+function whatShouldWeHighlight(input) {
+    // Only god himself knows what happens here
+    const inputArray = input.match(/(\p{L}?[^.!?]+[.!?]+)|(.+[^.!?]+$)/gu);
+    const highlightResult = [];
 
-  var last_index = 0;
+    let last_index = 0;
 
-  // Iterates through the sentences matched by the regex
-  if (inputArray) {
-    for (sentence of inputArray) {
-      var color;
-      if (sentence.replace(" ", "") != "") {
-        // Replacement for regex \b, for better non-ascii chars support.
-        var splitSentence = arrayRemove(sentence.split(" "), "");
-        var splitSentenceLen = splitSentence.length;
+    // Iterates through the sentences matched by the regex
+    if (inputArray) {
+        let sentence;
+        for (sentence of inputArray) {
+            let color;
+            if (sentence.replace(" ", "") !== "") {
+                // Replacement for regex \b, for better non-ascii chars support.
+                const splitSentence = arrayRemove(sentence.split(" "), "");
+                const splitSentenceLen = splitSentence.length;
 
-        // set the color based on length
-        if (splitSentenceLen <= 2) {
-          color = "two";
-        } else if (splitSentenceLen <= 4) {
-          color = "four";
-        } else if (splitSentenceLen <= 6) {
-          color = "six";
-        } else if (splitSentenceLen <= 12) {
-          color = "twelve";
-        } else {
-          color = "else";
+                // set the color based on length
+                if (splitSentenceLen <= 2) {
+                    color = "two";
+                } else if (splitSentenceLen <= 4) {
+                    color = "four";
+                } else if (splitSentenceLen <= 6) {
+                    color = "six";
+                } else if (splitSentenceLen <= 12) {
+                    color = "twelve";
+                } else {
+                    color = "else";
+                }
+
+                // Gets the starting and ending indexes of the sentence to avoid highlighting
+                // similar sentences or words multiple times.
+                const start_index = input.indexOf(sentence.trim(), last_index);
+                last_index = start_index + (sentence.trim().length - 1);
+
+                // Adds the sentence and its respective highlight color to the wrapper
+                highlightResult.push({
+                    highlight: [start_index, last_index + 1],
+                    className: color
+                });
+            }
         }
-
-        // Gets the starting and ending indexes of the sentence to avoid highlighting similiar sentences or words multiple times.
-        var start_index = input.indexOf(sentence.trim(), last_index);
-        last_index = start_index + (sentence.trim().length - 1);
-
-        // Adds the sentence and its respective highlight color to the wrapper
-        highlightResult.push({
-          highlight: [start_index, last_index + 1],
-          className: color
-        });
-      }
     }
-  }
 
-  return highlightResult;
+    return highlightResult;
 }
 
 // Highlights the text. Plugin @ https://github.com/lonekorean/highlight-within-textarea/
-$(".text").highlightWithinTextarea({
-  highlight: whatShouldWeHightlight
+textBox.highlightWithinTextarea({
+    highlight: whatShouldWeHighlight
 });
 
 
 function playAudio(soundType, highlight, i) {
-  window.setTimeout(function() {
-    $(".text").highlightWithinTextarea({ highlight: [highlight] });
-    soundsArray[soundType].play();
-    if (i >= arrayHighlight.length - 1) {
-      $(".text").attr("disabled", false);
-      $(".text").highlightWithinTextarea({ highlight: whatShouldWeHightlight });
-      $("#listen").text("Play");
-      $(".text").focus();
-    }
-  }, 750 * i);
-  var input = document.getElementsByClassName("text")[0].value;
-  var arrayHighlight = whatShouldWeHightlight(input);
+    const input = textBox.val();
+    const arrayHighlight = whatShouldWeHighlight(input);
+
+    window.setTimeout(function () {
+        textBox.highlightWithinTextarea({highlight: [highlight]});
+        soundsArray[soundType].play();
+        if (i >= arrayHighlight.length - 1) {  // resets the view if all the sounds have played.
+            window.setTimeout(function () {  // waits before resetting for a better visual experience.
+                textBox.attr("disabled", false);
+                textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
+                playButton.html('<i class="fas fa-play"></i>');
+                textBox.focus();
+            }, 800);
+        }
+    }, 700 * i); // set the timeout time the current sentence iteration, so it doesn't fire all at once.
+
 }
 
-document.getElementById("listen").onclick = function() {
-  if ($("#listen").text() == "Stop") {
-    console.log("STOP");
-    window.clearTimeouts();
-    $(".text").attr("disabled", false);
-    $(".text").highlightWithinTextarea({ highlight: whatShouldWeHightlight });
-    $("#listen").text("Play");
-    $(".text").focus();
-    return;
-  }
-  
-  $("#listen").text("Stop");
-  $(".text").attr("disabled", true);
-  $(".text").highlightWithinTextarea({ highlight: [] });
-
-  var input = document.getElementsByClassName("text")[0].value;
-  var arrayHighlight = whatShouldWeHightlight(input);
-  var soundType = 0;
-  var i = 0;
-
-  for (mark of arrayHighlight) {
-    var note = mark.className;
-    switch (note) {
-      case "two":
-        soundType = 0;
-        break;
-      case "four":
-        soundType = 1;
-        break;
-      case "six":
-        soundType = 2;
-        break;
-      case "twelve":
-        soundType = 3;
-        break;
-      case "else":
-        soundType = 4;
+playButton.click(function () {
+    console.log(playButton.html());
+    // Reset the view if the stop button is pressed
+    if (playButton.html() === '<i class="fas fa-pause"></i>') {
+        window.clearTimeouts();  // Stop and clear the sound timeouts
+        textBox.attr("disabled", false);
+        textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
+        playButton.html('<i class="fas fa-play"></i>');
+        textBox.focus();
+        return;
     }
 
-    playAudio(soundType, mark, i);
-    i++;
-  }
-};
+    const input = textBox.val();
+    const arrayHighlight = whatShouldWeHighlight(input);
+    let soundType = 0;
+    let i = 0;
+
+    if (arrayHighlight.length >= 1) {
+        playButton.html('<i class="fas fa-pause"></i>');
+        textBox.attr("disabled", true);
+    } else {
+        return;
+    }
+
+    let mark;
+    for (mark of arrayHighlight) {
+        const note = mark.className;
+        // Checks the marks (length based) and set the appropriate sound.
+        switch (note) {
+            case "two":
+                soundType = 0;
+                break;
+            case "four":
+                soundType = 1;
+                break;
+            case "six":
+                soundType = 2;
+                break;
+            case "twelve":
+                soundType = 3;
+                break;
+            case "else":
+                soundType = 4;
+        }
+
+        playAudio(soundType, mark, i);
+        i++;
+    }
+});
