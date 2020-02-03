@@ -151,12 +151,11 @@ function playAudio(soundType, highlight, i) {
                 textBox.focus();
             }, 800);
         }
-    }, 700 * i); // set the timeout time the current sentence iteration, so it doesn't fire all at once.
+    }, 500 * i); // set the timeout time the current sentence iteration, so it doesn't fire all at once.
 
 }
 
 playButton.click(function () {
-    console.log(playButton.html());
     // Reset the view if the stop button is pressed
     if (playButton.html() === '<i class="fas fa-pause"></i>') {
         window.clearTimeouts();  // Stop and clear the sound timeouts
