@@ -2,7 +2,7 @@
 
 See the rhythm of your text right on your browser.
 
-![alt text](https://i.imgur.com/ULv7kAA.jpg "Gary Provost's This Sentence Has 5 Words quote")
+![alt text](https://i.imgur.com/VGzMFB5.png "Gary Provost's This Sentence Has 5 Words quote")
 
 ---
 
