@@ -24,6 +24,7 @@ body {
     border: 0;
   color: #fff;
   font-family: monospace;
+  height: auto !important;
 }
 
 .hwt-input:focus {
@@ -66,7 +67,7 @@ button:focus {
   font-family: monospace;
   font-size: smaller;
   bottom: 0;
-  left: 0;
+  left: 10px;
   top: 97.5%;
   position: absolute;
   margin: 0;
@@ -101,7 +102,7 @@ body > div.credits > a.check-code:hover {
   font-family: monospace;
   font-size: smaller;
   bottom: 0;
-  right: 0;
+  right: 5px;
   top: 97.5%;
   position: absolute;
   margin: 0;

@@ -18,13 +18,13 @@ const sSix = new Howl({
 
 const sTwelve = new Howl({
     src: [
-        "./sounds/fa.wav"
+        "./sounds/sol.wav"
     ]
 });
 
 const sElse = new Howl({
     src: [
-        "./sounds/sol.wav"
+        "./sounds/la.wav"
     ]
 });
 
@@ -151,7 +151,7 @@ function playAudio(soundType, highlight, i) {
                 textBox.focus();
             }, 800);
         }
-    }, 750 * i); // set the timeout time the current sentence iteration, so it doesn't fire all at once.
+    }, 700 * i); // set the timeout time the current sentence iteration, so it doesn't fire all at once.
 
 }
 
