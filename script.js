@@ -175,7 +175,6 @@ playButton.click(function () {
     if (arrayHighlight.length >= 1) {
         playButton.html('<i class="fas fa-pause"></i>');
         textBox.attr("disabled", true);
-        // textBox.highlightWithinTextarea({highlight: []});
     } else {
         return;
     }
