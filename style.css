@@ -3,7 +3,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: #121212;
-  text-align: center;
 }
 
 .hwt-container {
@@ -98,17 +97,6 @@ body > div.credits > a.check-code:hover {
   text-decoration-style: dotted;
 }
 
-
-#listen {
-  font-family: monospace;
-  font-size: smaller;
-  bottom: 0;
-  right: 5px;
-  top: 97.5%;
-  position: absolute;
-  margin: 0;
-  padding-right: 5px;
-}
 
 .play-button {
     width: 50px;
