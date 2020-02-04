@@ -152,12 +152,18 @@ function playAudio(soundType, highlight, i) {
         textBox.focus();
         textBox.attr("disabled", true);
 
+        playButton.removeClass();
+        playButton.addClass('play-button ' + highlight.className);
+
         soundsArray[soundType].play();
         if (i >= arrayHighlight.length - 1) {  // resets the view if all the sounds have played.
             window.setTimeout(function () {  // waits before resetting for a better visual experience.
+                playButton.removeClass();
+                playButton.addClass('play-button twelve');
+                playButton.html('<i class="fas fa-play"></i>');
+
                 textBox.attr("disabled", false);
                 textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
-                playButton.html('<i class="fas fa-play"></i>');
                 textBox.focus();
             }, 800);
         }

@@ -102,7 +102,7 @@ body > div.credits > a.check-code:hover {
     width: 50px;
     height: 50px;
 
-    background-color: #56a756;
+  background-color: rgba(102, 204, 102, 0.8);
 
     border-radius: 50%;
     /*box-shadow: 0 4px 10px 0 #666;*/
@@ -124,11 +124,46 @@ body > div.credits > a.check-code:hover {
 }
 
 .play-button:hover {
-    /* box-shadow: 0 6px 14px 0 #666; */
-    transform: scale(1.1);
+  /* box-shadow: 0 6px 14px 0 #666; */
+  transform: scale(1.1);
+}
+
+.play-button:focus {
+  /* box-shadow: 0 6px 14px 0 #666; */
+  transform: scale(1.1);
 }
 
 .play-button:active {
     /*box-shadow: 0 4px 8px 0 #666;;*/
     transform: scale(0.90);
+}
+
+.play-button.two {
+  -webkit-transition: background-color 350ms linear;
+  transition: background-color 350ms linear;
+  background-color: rgba(253, 253, 131, 0.6);
+}
+
+.play-button.four {
+  -webkit-transition: background-color 350ms linear;
+  transition: background-color 350ms linear;
+  background-color: rgba(204, 153, 204, 0.8);
+}
+
+.play-button.six {
+  -webkit-transition: background-color 350ms linear;
+  transition: background-color 350ms linear;
+  background-color: rgba(255, 102, 102, 0.8);
+}
+
+.play-button.twelve {
+  -webkit-transition: background-color 350ms linear;
+  transition: background-color 350ms linear;
+  background-color: rgba(102, 204, 102, 0.8);
+}
+
+.play-button.else {
+  -webkit-transition: background-color 350ms linear;
+  transition: background-color 350ms linear;
+  background-color: rgba(153, 204, 204, 0.8);
 }
