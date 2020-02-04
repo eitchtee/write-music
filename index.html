@@ -22,18 +22,24 @@
 <body>
 
 <div style="text-align: center;">
-<button class="play-button"><i class="fas fa-play"></i></button>
+    <button class="play-button" tabindex="2"><i class="fas fa-play"></i></button>
 </div>
 
 <label>
     <textarea class="text"
-              placeholder="Don't just write words. Write music..."></textarea>
+              placeholder="Don't just write words. Write music..."
+              tabindex="1"></textarea>
 </label>
 
-<div class="credits">
-    <a class="by" href="https://github.com/eitchtee/" target="_blank">by @eitchtee</a>
+<div class="credits" tabindex="-1">
+    <a class="by"
+       href="https://github.com/eitchtee/"
+       tabindex="-1"
+       target="_blank">by @eitchtee</a>
+
     <a class="check-code"
        href="https://github.com/eitchtee/write-music"
+       tabindex="-1"
        target="_blank">Check the code</a>
 </div>
 
