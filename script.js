@@ -142,6 +142,16 @@ function playAudio(soundType, highlight, i) {
 
     window.setTimeout(function () {
         textBox.highlightWithinTextarea({highlight: [highlight]});
+
+        // Scrolls the textarea by setting the cursor to the current highlighted word and enabling and focusing
+        // the textarea. Hacky.
+        textBox.attr("disabled", false);
+        textBox.prop('selectionStart', highlight.highlight[1]);
+        textBox.prop('selectionEnd', highlight.highlight[1]);
+        textBox.blur();
+        textBox.focus();
+        textBox.attr("disabled", true);
+
         soundsArray[soundType].play();
         if (i >= arrayHighlight.length - 1) {  // resets the view if all the sounds have played.
             window.setTimeout(function () {  // waits before resetting for a better visual experience.
