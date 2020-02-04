@@ -20,8 +20,8 @@ body {
   font-size: 1.6em;
   resize: none;
   overflow: scroll;
-  padding: 5px;
-    border: 0;
+  padding: 10px;
+  border: 0;
   color: #fff;
   font-family: monospace;
   height: auto !important;

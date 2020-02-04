@@ -85,7 +85,7 @@ function arrayRemove(arr, value) {
 
 function whatShouldWeHighlight(input) {
     // Only god himself knows what happens here
-    const inputArray = input.match(/(\p{L}?[^\n.!?]+[\n.!?]+)|(.+[^.!?]+$)/gu);
+    const inputArray = input.match(/(\p{L}?[^\n.!?]+[\n.!?]+)|(.+[^.!?]?$)/gu);
     const highlightResult = [];
 
     let last_index = 0;
@@ -112,7 +112,6 @@ function whatShouldWeHighlight(input) {
                 } else {
                     color = "else";
                 }
-
                 // Gets the starting and ending indexes of the sentence to avoid highlighting
                 // similar sentences or words multiple times.
                 const start_index = input.indexOf(sentence.trim(), last_index);
@@ -126,7 +125,6 @@ function whatShouldWeHighlight(input) {
             }
         }
     }
-
     return highlightResult;
 }
 
@@ -174,10 +172,13 @@ function playAudio(soundType, highlight, i) {
 playButton.click(function () {
     // Reset the view if the stop button is pressed
     if (playButton.html() === '<i class="fas fa-pause"></i>') {
+        playButton.removeClass();
+        playButton.addClass('play-button twelve');
+        playButton.html('<i class="fas fa-play"></i>');
+
         window.clearTimeouts();  // Stop and clear the sound timeouts
         textBox.attr("disabled", false);
         textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
-        playButton.html('<i class="fas fa-play"></i>');
         textBox.focus();
         return;
     }
