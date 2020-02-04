@@ -85,7 +85,7 @@ function arrayRemove(arr, value) {
 
 function whatShouldWeHighlight(input) {
     // Only god himself knows what happens here
-    const inputArray = input.match(/(\p{L}?[^.!?]+[.!?]+)|(.+[^.!?]+$)/gu);
+    const inputArray = input.match(/(\p{L}?[^\n.!?]+[\n.!?]+)|(.+[^.!?]+$)/gu);
     const highlightResult = [];
 
     let last_index = 0;
@@ -95,7 +95,7 @@ function whatShouldWeHighlight(input) {
         let sentence;
         for (sentence of inputArray) {
             let color;
-            if (sentence.replace(" ", "") !== "") {
+            if (sentence.replace(" ", "").replace("\n", "").trim() !== "") {
                 // Replacement for regex \b, for better non-ascii chars support.
                 const splitSentence = arrayRemove(sentence.split(" "), "");
                 const splitSentenceLen = splitSentence.length;
