@@ -12,15 +12,15 @@ body {
     bottom: 40px;
   left: 5px;
   right: 5px;
-  position: fixed;
+  position: absolute;
 }
 
 .hwt-content {
-  line-height: 30px;
-  font-size: 1.6em;
+  line-height: 4vh;
+  font-size: 3vh;
   resize: none;
   overflow: scroll;
-  padding: 10px;
+  padding: 0.6vh;
   border: 0;
   color: #fff;
   font-family: monospace;
@@ -65,33 +65,33 @@ button:focus {
 
 .credits {
   font-family: monospace;
-  font-size: smaller;
+  font-size: 1.6vh;
   bottom: 0;
-    right: 5px;
-    top: 96.5%;
+  left: 0.4vh;
+  top: 98vh;
   position: absolute;
   margin: 0;
-  padding-right: 5px;
+  padding-right: 0.4vh;
 }
 
-body > div.credits > a.by {
+.by {
   color: grey;
   text-decoration: none;
 }
 
-body > div.credits > a.check-code{
+.check-code {
   color: grey;
   text-decoration: none;
 }
 
 
-body > div.credits > a.by:hover {
+.by:hover {
   color: wheat;
   text-decoration:underline;
   text-decoration-style: dotted;
 }
 
-body > div.credits > a.check-code:hover {
+.check-code:hover {
   color: wheat;
   text-decoration:underline;
   text-decoration-style: dotted;
@@ -99,28 +99,28 @@ body > div.credits > a.check-code:hover {
 
 
 .play-button {
-    width: 50px;
-    height: 50px;
+  width: 8vh;
+  height: 8vh;
 
   background-color: rgba(102, 204, 102, 0.8);
 
-    border-radius: 50%;
-    /*box-shadow: 0 4px 10px 0 #666;*/
-    transition: all 0.1s ease-in-out;
+  border-radius: 50%;
+  /*box-shadow: 0 4px 10px 0 #666;*/
+  transition: all 0.1s ease-in-out;
 
-    font-size: 25px;
-    color: white;
-    text-align: center;
-    line-height: 53px;
+  font-size: 4.4vh;
+  color: white;
+  text-align: center;
+  line-height: 8vh;
 
-    position: fixed;
+  position: absolute;
   /*left: 50%;*/
-    bottom: 6px;
-    z-index: 1;
+  bottom: 0.8vh;
+  z-index: 1;
 
-    border: none;
-    padding: 0;
-    outline: none;
+  border: none;
+  padding: 0;
+  outline: none;
 }
 
 .play-button:hover {
