@@ -146,8 +146,11 @@ function playAudio(soundType, highlight, i) {
         textBox.attr("disabled", false);
         textBox.prop('selectionStart', highlight.highlight[1]);
         textBox.prop('selectionEnd', highlight.highlight[1]);
+
         textBox.blur();
         textBox.focus();
+        textBox.blur();
+
         textBox.attr("disabled", true);
 
         playButton.removeClass();

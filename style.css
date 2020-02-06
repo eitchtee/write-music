@@ -60,15 +60,16 @@ body {
 .credits {
   font-family: monospace;
   font-size: 1.8vh;
-  bottom: 0;
+  bottom: 1.5vh;
   left: 0.4vh;
-  top: 95vh;
+  /*top: 80vh;*/
   position: absolute;
   display: grid;
   grid-template-columns: 14vh 16vh;
   text-align: center;
   align-content: center;
   grid-column-gap: 1vh;
+  width: 1vw;
 }
 
 .by {
