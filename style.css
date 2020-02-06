@@ -8,10 +8,10 @@ body {
 .hwt-container {
   background-color: #121212;
   display: grid;
-  top: 10px;
-    bottom: 40px;
-  left: 5px;
-  right: 5px;
+  top: 1vh;
+  bottom: 10vh;
+  left: 2vh;
+  right: 1vh;
   position: absolute;
 }
 
@@ -56,43 +56,45 @@ body {
   background-color: rgba(153, 204, 204, 0.8);
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-  outline: none;
-}
 
 .credits {
   font-family: monospace;
-  font-size: 1.6vh;
+  font-size: 1.8vh;
   bottom: 0;
   left: 0.4vh;
-  top: 98vh;
+  top: 95vh;
   position: absolute;
-  margin: 0;
-  padding-right: 0.4vh;
+  display: grid;
+  grid-template-columns: 14vh 16vh;
+  text-align: center;
+  align-content: center;
+  grid-column-gap: 1vh;
 }
 
 .by {
-  color: grey;
+  color: white;
   text-decoration: none;
+  border-radius: 15px;
+  background-color: rgba(253, 253, 131, 0.6);
 }
 
 .check-code {
-  color: grey;
+  color: white;
   text-decoration: none;
+  border-radius: 15px;
+  background-color: rgba(204, 153, 204, 0.8);
+
 }
 
 
 .by:hover {
-  color: wheat;
+  color: papayawhip;
   text-decoration:underline;
   text-decoration-style: dotted;
 }
 
 .check-code:hover {
-  color: wheat;
+  color: papayawhip;
   text-decoration:underline;
   text-decoration-style: dotted;
 }
@@ -116,6 +118,7 @@ button:focus {
   position: absolute;
   /*left: 50%;*/
   bottom: 0.8vh;
+  right: 0.8vh;
   z-index: 1;
 
   border: none;
@@ -166,4 +169,32 @@ button:focus {
   -webkit-transition: background-color 350ms linear;
   transition: background-color 350ms linear;
   background-color: rgba(153, 204, 204, 0.8);
+}
+
+/*Custom Scrollbar*/
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9e9e9e;
+}
+
+
+/*Removes focus border*/
+*:focus {
+  outline: none;
 }
