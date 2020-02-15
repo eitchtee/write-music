@@ -210,8 +210,8 @@ playButton.click(function () {
     for (mark of arrayHighlight) {
         const note = mark.className;
         // set the appropriate sound based on the current highlight.
-        let soundType = markToSound[note];
-        
+        soundType = markToSound[note];
+
         playAudio(soundType, mark, i);
         i++;
     }
