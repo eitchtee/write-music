@@ -30,6 +30,14 @@ const sElse = new Howl({
 
 const soundsArray = [sTwo, sFour, sSix, sTwelve, sElse];
 
+const markToSound = {
+    "two": 0,
+    "four": 1,
+    "six": 2,
+    "twelve": 3,
+    "else": 4
+};
+
 let textBox = $(".text");
 let playButton = $('.play-button');
 
@@ -201,24 +209,9 @@ playButton.click(function () {
     let mark;
     for (mark of arrayHighlight) {
         const note = mark.className;
-        // Checks the marks (length based) and set the appropriate sound.
-        switch (note) {
-            case "two":
-                soundType = 0;
-                break;
-            case "four":
-                soundType = 1;
-                break;
-            case "six":
-                soundType = 2;
-                break;
-            case "twelve":
-                soundType = 3;
-                break;
-            case "else":
-                soundType = 4;
-        }
-
+        // set the appropriate sound based on the current highlight.
+        let soundType = markToSound[note];
+        
         playAudio(soundType, mark, i);
         i++;
     }
