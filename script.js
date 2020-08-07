@@ -40,6 +40,9 @@ const markToSound = {
 
 let textBox = $(".text");
 let playButton = $('.play-button');
+let viewButton = $('.view-button');
+
+var viewHidden = false;
 
 
 // Wrapper to setTimeout that allows the easy removable of all timeouts set
@@ -174,6 +177,9 @@ function playAudio(soundType, highlight, i) {
                 textBox.attr("disabled", false);
                 textBox.highlightWithinTextarea({highlight: whatShouldWeHighlight});
                 textBox.focus();
+                if (viewHidden) {
+                    $('.hwt-backdrop').addClass('hidden');
+                }
             }, 800);
         }
     }, 500 * i); // set the timeout time the current sentence iteration, so it doesn't fire all at once.
@@ -216,3 +222,15 @@ playButton.click(function () {
         i++;
     }
 });
+
+viewButton.click(function () {
+    if (viewHidden) {
+        viewButton.html('<i class="far fa-eye-slash"></i>')
+        $('.hwt-backdrop').removeClass('hidden');
+        viewHidden = false;
+    } else {
+        viewButton.html('<i class="far fa-eye"></i>')
+        $('.hwt-backdrop').addClass('hidden');
+        viewHidden = true;
+    }  
+})

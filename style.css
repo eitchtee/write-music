@@ -1,3 +1,13 @@
+:root {
+  --color-green: rgba(102, 204, 102, 0.8);
+  --color-yellow: rgba(253, 253, 131, 0.6);
+  --color-red: rgba(138, 40, 40, 0.8);
+  --color-purple: rgba(204, 153, 204, 0.8);
+  --color-blue: rgba(153, 204, 204, 0.8);
+
+  font-size: 60%;
+}
+
 body {
   margin: 0;
   height: 100%;
@@ -5,11 +15,16 @@ body {
   background-color: #121212;
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
 .hwt-container {
   background-color: #121212;
   display: grid;
   top: 1vh;
-  bottom: 10vh;
+  bottom: 5vh;
   left: 2vh;
   right: 1vh;
   position: absolute;
@@ -37,23 +52,23 @@ body {
 }
 
 .hwt-content mark.two {
-    background-color: rgba(253, 253, 131, 0.6);
+    background-color: var(--color-yellow);
 }
 
 .hwt-content mark.four {
-  background-color: rgba(204, 153, 204, 0.8);
+  background-color: var(--color-purple);
 }
 
 .hwt-content mark.six {
-  background-color: rgba(255, 102, 102, 0.8);
+  background-color: var(--color-red);
 }
 
 .hwt-content mark.twelve {
-  background-color: rgba(102, 204, 102, 0.8);
+  background-color: var(--color-green);
 }
 
 .hwt-content mark.else {
-  background-color: rgba(153, 204, 204, 0.8);
+  background-color: var(--color-blue);
 }
 
 
@@ -76,14 +91,14 @@ body {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  background-color: rgba(253, 253, 131, 0.6);
+  background-color: var(--color-yellow);
 }
 
 .check-code {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  background-color: rgba(204, 153, 204, 0.8);
+  background-color: var(--color-purple);
 
 }
 
@@ -230,4 +245,40 @@ body {
 /*Removes focus border*/
 *:focus {
   outline: none;
+}
+
+.view-button {
+  width: 4vh;
+  height: 4vh;
+
+  background-color: rgba(102, 204, 102, 0.8);
+
+  border-radius: 50%;
+
+  transition: all 0.1s ease-in-out;
+
+  font-size: 2.4vh;
+  color: white;
+  text-align: center;
+
+  position: absolute;
+  bottom: 0.8vh;
+  right: 7.5rem;
+  z-index: 1;
+
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+.view-button:hover {
+  transform: scale(1.1);
+}
+
+.view-button:focus {
+  transform: scale(1.1);
+}
+
+.view-button:active {
+  transform: scale(0.9);
 }
