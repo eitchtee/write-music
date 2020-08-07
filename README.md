@@ -4,7 +4,7 @@
     </a>
 </div>
 
-<h1 align="center">Write Music</h1>
+<h3 align="center">Write Music</h3>
 <p align="center">See the rhythm of your text right on your browser.</p>
 
 <div align="center">
