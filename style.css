@@ -75,14 +75,14 @@ body {
 .by {
   color: white;
   text-decoration: none;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: rgba(253, 253, 131, 0.6);
 }
 
 .check-code {
   color: white;
   text-decoration: none;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: rgba(204, 153, 204, 0.8);
 
 }
