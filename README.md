@@ -1,6 +1,6 @@
 <div align="center">
 	<a href="https://herculino.com/write-music" target="_blank">
-    	<img alt="Write Music" title="Write Music" src="./assets/write-music.png" width="500" />
+    	<img alt="Write Music" title="Write Music" src="./.github/write-music.png" width="500" />
     </a>
 </div>
 
@@ -53,7 +53,7 @@ Clone this repo and edit `index.html` and `script.js`
 ---
 
 <div align="center">
-	<img alt="Gary Provost's This Sentence Has 5 Words quote" title="Write Music" src="./assets/gary-tip.png">
+	<img alt="Gary Provost's This Sentence Has 5 Words quote" title="Write Music" src="./.github/gary-tip.png">
 </div>
 
 <div align="center"><code align="center">Write Music</code></div>
